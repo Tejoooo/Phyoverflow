@@ -19,6 +19,7 @@ def login(request):
             return redirect('login')
         user = authenticate(request,email=email,password=password)
         if user is not None:
+            login(request,user)
             return redirect('index')
         else:
             messages.error(request,"User Credentials doesnot matched")
